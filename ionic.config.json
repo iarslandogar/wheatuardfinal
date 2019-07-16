@@ -1,0 +1,8 @@
+{
+  "name": "WheatGuard",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

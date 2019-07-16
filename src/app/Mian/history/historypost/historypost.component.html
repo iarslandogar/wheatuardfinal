@@ -1,0 +1,24 @@
+<div class="d-block card shadow mb-1">
+    <div class="row m-0">
+        <div class="col-3 py-2 pr-1">
+          <ion-img style="height: 100%;" src="assets/Slider/1.jp" class="m-auto"></ion-img>
+        </div>
+        <div class="col-9 pt-3 bg-light">
+          <div>
+            <h5 class="font-weight-normal">
+              Severity: {{post.Severity}}
+            </h5>
+          </div>
+          <div>
+            <h5 class="font-weight-normal">
+              Medicine: {{post.Medicine}}
+            </h5>
+          </div>
+          <div>
+            <p class="text-dark">
+              {{ post.Time | date:'medium'}}
+            </p>
+          </div>
+        </div>
+      </div>
+</div>

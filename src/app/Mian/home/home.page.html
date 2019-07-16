@@ -1,0 +1,178 @@
+<ion-header>
+    <ion-toolbar><ion-buttons slot="start"></ion-buttons>
+      <div class="row m-0">
+        <div class="col-4"><ion-menu-button></ion-menu-button></div>
+        <div class="col-4 p-0"><ion-title style="text-align: center">Home</ion-title> </div> 
+      </div>
+    </ion-toolbar>
+  </ion-header>
+<ion-content  class="ion-padding">
+
+        <ion-card class="current-temp" >
+          <ion-card-content class="cardContent">
+            <ion-grid>
+              <ion-row>
+                <ion-col width-50 offset-25>
+                  <ion-card-title>{{weatherobj.name}}</ion-card-title>
+                  <ion-card-subtitle>{{this.temperatureobj}}</ion-card-subtitle>
+                  <ion-avatar><img src="http://openweathermap.org/img/w/{{weatherobj.weather[0].icon}}.png"></ion-avatar>
+                  <h3 class="desc">{{ weatherobj.weather[0].description }}</h3>
+                </ion-col>
+              </ion-row>
+              <ion-row class="row-content">
+                <ion-col col-4>{{ windDirection(weatherobj.wind.deg) }}</ion-col>
+                <ion-col col-4>{{ weatherobj.wind.speed }}M/S</ion-col>
+                <ion-col col-4>{{ weatherobj.main.humidity }}%</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+  
+        <ion-card class="card-ion">
+          <ion-card-content>
+            <ion-card-header>Details</ion-card-header>
+            <ion-grid class="card-list">
+              <ion-row class="rowDetail">
+                <ion-col col-6 class="itemName">
+                  <ion-icon name="cloud"></ion-icon>
+                  Pressure
+                </ion-col>
+                <ion-col col-6 class="col_ion">{{weatherobj.main.pressure}}HPa</ion-col>
+              </ion-row>
+              <ion-row class="rowDetail">
+                <ion-col col-6 class="itemName">
+                  <ion-icon name="umbrella"></ion-icon>
+                  Humidity
+                </ion-col>
+                <ion-col col-6 class="col_ion">{{weatherobj.main.humidity }}%</ion-col>
+              </ion-row>
+              <ion-row class="rowDetail">
+                <ion-col col-6 class="itemName">
+                  <ion-icon name="eye"></ion-icon>
+                  Visibility
+                </ion-col>
+                <ion-col col-6 class="col_ion">{{weatherobj.visibility }} meters</ion-col>
+              </ion-row>
+              <ion-row class="rowDetail">
+                <ion-col col-6 class="itemName">
+                  <ion-icon name="ios-globe"></ion-icon>
+                  Longitude
+                </ion-col>
+                <ion-col col-6 class="col_ion">{{weatherobj.coord.lon }}</ion-col>
+              </ion-row>
+              <ion-row class="rowDetail">
+                <ion-col col-6 class="itemName">
+                  <ion-icon name="ios-globe"></ion-icon>
+                  Latitude
+                </ion-col>
+                <ion-col col-6 class="col_ion">{{weatherobj.coord.lat }}</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+  
+        <ion-card class="card-ion">
+          <ion-card-content>
+            <ion-card-header>Wind</ion-card-header>
+            <ion-grid class="card-list">
+              <ion-row class="rowDetail">
+                <ion-col col-6 class="itemName">
+                  <ion-icon name="compass"></ion-icon>
+                  Direction
+                </ion-col>
+                <ion-col col-6 class="col_ion">{{ windDirection(weatherobj.wind.deg) }}</ion-col>
+              </ion-row>
+              <ion-row class="rowDetail">
+                <ion-col col-6 class="itemName">
+                  <ion-icon name="speedometer"></ion-icon>
+                  Speed
+                </ion-col>
+                <ion-col col-6 class="col_ion">{{weatherobj.wind.speed}}M/S</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+  
+  
+      
+  <!-- Slider -->
+  <h3>Diseases</h3>
+ 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1">
+        <span class="slider-nav arrow-prev"
+          (click)="slidePrev(sliderOne,slideWithNav)">
+          <div class="prev-icon-custom custon-nav"
+            [class.disabled]="sliderOne.isBeginningSlide"></div>
+        </span>
+      </ion-col>
+      <ion-col size="10">
+ 
+        <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav
+          (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+          <ion-slide *ngFor="let s of sliderOne.slidesItems">
+            <img src="../../assets/Slider/{{s.id}}.jpg">
+          </ion-slide>
+        </ion-slides>
+ 
+      </ion-col>
+      <ion-col size="1">
+        <span class="slider-nav arrow-next"
+          (click)="slideNext(sliderOne,slideWithNav)">
+          <div class="next-icon-custom custon-nav"
+            [class.disabled]="sliderOne.isEndSlide"></div>
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+ 
+
+  
+<!-- Camera Stuff -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button> 
+    <ion-fab-list side="start">
+      <ion-fab-button color="light" (click)="openCam()">
+        <ion-icon name="camera"  ></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="gallery()">
+        <ion-icon name="image"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+<!-- Upload -->
+<!-- <ion-button (click)="upload()">Upload</ion-button> -->
+
+<!-- Socials -->
+  <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+    <ion-fab-button color="primary">
+      <ion-icon name="md-share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light" href="https://www.facebook.com/wheatguard">
+        <ion-icon name="logo-facebook" ></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" href="https://www.twitter.com/wheatguard">
+        <ion-icon name="logo-LinkedIn"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" href="https://www.instagram.com/wheatguardpak">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" href="mailto:info@wheatguardpk.com">
+        <ion-icon name="mail"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  
+
+  
+</ion-content>
+
+
+
+

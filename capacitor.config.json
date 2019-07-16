@@ -1,0 +1,7 @@
+{
+  "appId": "com.wheatguard.app",
+  "appName": "Wheatguard",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
